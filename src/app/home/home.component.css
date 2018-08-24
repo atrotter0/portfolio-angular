@@ -1,0 +1,14 @@
+.profile-image-block {
+  border-radius: 200px;
+  box-shadow: 2px 2px 10px #4e4e4e;
+  min-height: 350px;
+  margin: 20px auto;
+  width: 350px;
+}
+
+.home-image {
+  /* background-image: url('../images/abel-trotter-portfolio-picture.jpg'); */
+  background-position: 100% 100%;
+  background-size: 120%;
+}
+

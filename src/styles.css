@@ -12,6 +12,10 @@ a:focus {
   outline: none;
 }
 
+.container-block {
+  margin-bottom: 100px;
+}
+
 /* fade in */
 
 .fast-fade-in {
