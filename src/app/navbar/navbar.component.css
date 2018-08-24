@@ -37,3 +37,11 @@ fa {
 .large-fa-icon {
   font-size: 44px;
 }
+
+/* responsive styles */
+@media screen and (max-width: 860px) {
+  .nav ul li {
+    margin: 0px auto;
+    width: 31%;
+  }
+}
