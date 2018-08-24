@@ -39,6 +39,13 @@ a:focus {
   max-width: 800px;
 }
 
+/* responsive styles */
+@media screen and (max-width: 700px) {
+  .content-block {
+    width: 95%;
+  }
+}
+
 /* fade in */
 
 .fast-fade-in {
