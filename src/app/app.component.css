@@ -1,9 +1,9 @@
 .main-block {
   background: rgba(255,255,255,0.5);
   height: 100%;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  top: 0;
-  width: 100%;
+  margin: 20px;
+}
+
+.container-block {
+  margin-bottom: 70px;
 }
