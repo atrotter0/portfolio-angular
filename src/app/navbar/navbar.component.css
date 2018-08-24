@@ -29,10 +29,10 @@
   transition: 0.2s;
 }
 
-span.glyphicon {
+fa {
   margin-bottom: 10px;
 }
 
-.large-glyph {
+.large-fa-icon {
   font-size: 44px;
 }
