@@ -26,3 +26,23 @@
 .project-tile-image img {
   width: 100%;
 }
+
+.project-tile-caption p {
+  font-size: 14px;
+}
+
+/* responsive styles */
+@media screen and (max-width: 810px) {
+  .project-tile {
+    display: block;
+    height: auto;
+    width: 70%;
+    margin: 0 auto 60px auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .project-tile {
+    width: 95%;
+  }
+}
