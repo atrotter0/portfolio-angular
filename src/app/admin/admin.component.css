@@ -20,13 +20,41 @@
 
 .project-list li {
   margin-top: 20px;
+  width: 300px;
 }
 
-.left-margin {
-  margin-left: 10px;
+.project-btn-left-margin {
+  float: right;
 }
 
 .admin-project-icon {
   font-size: 20px;
   margin-right: 10px;
+}
+
+/* reponsive styles */
+@media screen and (max-width: 602px) {
+  .admin-panel-nav li {
+    display: block;
+    margin: 10px 0px;
+    width: 100%;
+  }
+
+  .admin-panel-nav li .btn {
+    width: 95%;
+  }
+
+  .content-block .btn {
+    display: block;
+    margin: 10px 0px;
+    width: 100%;
+  }
+
+  .project-list {
+    padding: 0px;
+  }
+
+  .project-list li {
+    width: 100%;
+  }
 }
