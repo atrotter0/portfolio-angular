@@ -13,3 +13,20 @@
 .admin-panel-nav li .btn {
   width: 180px;
 }
+
+.project-list {
+  list-style-type: none;
+}
+
+.project-list li {
+  margin-top: 20px;
+}
+
+.left-margin {
+  margin-left: 10px;
+}
+
+.admin-project-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}

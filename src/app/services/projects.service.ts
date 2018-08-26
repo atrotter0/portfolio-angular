@@ -14,7 +14,26 @@ export class ProjectsService {
     return this.projects;
   }
 
+  getProjectById(projectId: string) {
+    return this.database.object('projects/' + projectId);
+  }
+
   addProject(newProject: Project) {
     this.projects.push(newProject);
+  }
+
+  updateProject(projectToUpdate) {
+    var projectInFirebase = this.getProjectById(projectToUpdate.$key);
+    projectInFirebase.update({
+      imgUrl: projectToUpdate.imgUrl,
+      title: projectToUpdate.title,
+      description: projectToUpdate.description,
+      githubLink: projectToUpdate.githubLink
+    });
+  }
+
+  deleteProject(projectToDelete){
+    var projectInFirebase = this.getProjectById(projectToDelete.$key);
+    projectInFirebase.remove();
   }
 }

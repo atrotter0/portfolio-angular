@@ -12,13 +12,13 @@
       <li>
         <button class="btn btn-lg btn-warning" (click)="toggleEditForm()">
           <fa name="pencil"></fa>
-          Edit Project
+          Edit Projects
         </button>
       </li>
       <li>
         <button class="btn btn-lg btn-danger" (click)="toggleDeleteForm()">
           <fa name="exclamation-circle"></fa>
-          Delete Project
+          Delete Projects
         </button>
       </li>
     </ul>
@@ -42,18 +42,63 @@
       <label for="githubLink">Github URL:</label>
       <input #newGithubLink class="form-control" id="githubLink">
     </div>
-    <button class="btn btn-lg btn-primary" (click)="submitForm(newImgUrl.value, newTitle.value, newDesc.value, newGithubLink.value)">
-      Submit
+    <button class="btn btn-lg btn-success" (click)="submitForm(newImgUrl.value, newTitle.value, newDesc.value, newGithubLink.value)">
+      <fa name="plus"></fa>
+      Add
     </button>
   </div>
   <!-- edit project form -->
   <div class="content-block fast-fade-in" *ngIf="showEditForm">
-    <h4>Edit Project</h4>
-    List projects with edit buttons next to each
+    <h4>Edit Projects</h4>
+    <ul class="project-list" *ngFor="let project of projects | async">
+      <li>
+        <fa name="folder" class="admin-project-icon"></fa>
+        {{project.title}}
+        <button class="btn btn-med btn-default btn-warning left-margin" (click)="editProjectClicked(project)">
+          <fa name="pencil"></fa>
+          Edit
+        </button>
+      </li>
+    </ul>
+    <div *ngIf="selectedProject">
+      <div class="form-group">
+        <label for="imgUrl">Thumbnail Image Url:</label>
+          <input [(ngModel)]="selectedProject.imgUrl" class="form-control" id="imgUrl" autofocus="true">
+        </div>
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input [(ngModel)]="selectedProject.title" class="form-control" id="title">
+        </div>
+        <div class="form-group">
+          <label for="desc">Description:</label>
+          <input [(ngModel)]="selectedProject.description" class="form-control" id="desc">
+        </div>
+        <div class="form-group">
+          <label for="githubLink">Github URL:</label>
+          <input [(ngModel)]="selectedProject.githubLink" class="form-control" id="githubLink">
+        </div>
+        <button class="btn btn-lg btn-success" (click)="updateProjectClicked(selectedProject)">
+          <fa name="pencil"></fa>
+          Update
+        </button>
+        <button class="btn btn-lg btn-danger" (click)="cancelEdit()">
+          <fa name="ban"></fa>
+          Cancel
+        </button>
+    </div>
   </div>
   <!-- delete project form -->
   <div class="content-block fast-fade-in" *ngIf="showDeleteForm">
-    <h4>Delete Project</h4>
-    List projects with delete buttons next to each
+    <h4>Delete Projects</h4>
+    <ul class="project-list" *ngFor="let project of projects | async">
+      <li>
+        <fa name="folder" class="admin-project-icon"></fa>
+        {{project.title}}
+        <button class="btn btn-med btn-default btn-danger left-margin" (click)="deleteProjectClicked(project)">
+          <fa name="exclamation-circle"></fa>
+          Delete
+        </button>
+      </li>
+    </ul>
   </div>
 </div>
