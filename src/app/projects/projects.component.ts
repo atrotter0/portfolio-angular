@@ -9,10 +9,12 @@ import { FirebaseListObservable } from 'angularfire2/database';
   providers: [ProjectsService]
 })
 export class ProjectsComponent implements OnInit {
+  projects: FirebaseListObservable<any[]>;
 
   constructor(private projectsService: ProjectsService) { }
 
   ngOnInit() {
+    
   }
 
 }
