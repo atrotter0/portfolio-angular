@@ -1,0 +1,19 @@
+.admin-panel-box {
+
+}
+
+.admin-panel-nav {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  text-align:  center;
+}
+
+.admin-panel-nav li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.admin-panel-nav li .btn {
+  width: 180px;
+}
