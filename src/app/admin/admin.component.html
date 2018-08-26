@@ -10,19 +10,20 @@
         </button>
       </li>
       <li>
-        <button class="btn btn-lg btn-warning">
+        <button class="btn btn-lg btn-warning" (click)="toggleEditForm()">
           <fa name="pencil"></fa>
           Edit Project
         </button>
       </li>
       <li>
-        <button class="btn btn-lg btn-danger">
+        <button class="btn btn-lg btn-danger" (click)="toggleDeleteForm()">
           <fa name="exclamation-circle"></fa>
           Delete Project
         </button>
       </li>
     </ul>
   </div>
+  <!-- add project form -->
   <div class="content-block fast-fade-in" *ngIf="showAddForm">
     <h4>Add Project</h4>
     <div class="form-group">
@@ -44,5 +45,15 @@
     <button class="btn btn-lg btn-primary" (click)="submitForm(newImgUrl.value, newTitle.value, newDesc.value, newGithubLink.value)">
       Submit
     </button>
+  </div>
+  <!-- edit project form -->
+  <div class="content-block fast-fade-in" *ngIf="showEditForm">
+    <h4>Edit Project</h4>
+    List projects with edit buttons next to each
+  </div>
+  <!-- delete project form -->
+  <div class="content-block fast-fade-in" *ngIf="showDeleteForm">
+    <h4>Delete Project</h4>
+    List projects with delete buttons next to each
   </div>
 </div>
