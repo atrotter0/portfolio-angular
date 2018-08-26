@@ -3,9 +3,9 @@
 <div class="container-block">
   <div class="content-block no-shadow large-block fast-fade-in">
     <div class="project-tile" *ngFor="let project of projects | async">
-      <a href="{{project.githubLink}}" title="" target="_blank">
+      <a href="{{project.githubLink}}" title="{{project.linkTitleTag}}" target="_blank">
         <div class="project-tile-image">
-          <img src="{{project.imgUrl}}" alt="">
+          <img src="{{project.imgUrl}}" alt="{{project.imgAltTag}}">
         </div>
         <div class="project-tile-caption">
           <h4>{{project.title}}</h4>

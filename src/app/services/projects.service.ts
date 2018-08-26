@@ -26,9 +26,11 @@ export class ProjectsService {
     var projectInFirebase = this.getProjectById(projectToUpdate.$key);
     projectInFirebase.update({
       imgUrl: projectToUpdate.imgUrl,
-      title: projectToUpdate.title,
+      imgAltTag: projectToUpdate.imgAltTag,
+      name: projectToUpdate.name,
       description: projectToUpdate.description,
-      githubLink: projectToUpdate.githubLink
+      githubLink: projectToUpdate.githubLink,
+      linkTitleTag: projectToUpdate.linkTitleTag
     });
   }
 

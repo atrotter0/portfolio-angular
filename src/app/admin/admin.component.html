@@ -31,8 +31,12 @@
       <input #newImgUrl class="form-control" id="imgUrl" autofocus="true">
     </div>
     <div class="form-group">
-      <label for="title">Title:</label>
-      <input #newTitle class="form-control" id="title">
+      <label for="imgAltTag">Image Alt Tag:</label>
+      <input #imgAltTag class="form-control" id="imgAltTag">
+    </div>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input #newName class="form-control" id="name">
     </div>
     <div class="form-group">
       <label for="desc">Description:</label>
@@ -42,7 +46,18 @@
       <label for="githubLink">Github URL:</label>
       <input #newGithubLink class="form-control" id="githubLink">
     </div>
-    <button class="btn btn-lg btn-success" (click)="submitForm(newImgUrl.value, newTitle.value, newDesc.value, newGithubLink.value)">
+    <div class="form-group">
+      <label for="linkTitleTag">Link Title Tag:</label>
+      <input #linkTitleTag class="form-control" id="linkTitleTag">
+    </div>
+    <button class="btn btn-lg btn-success" (click)="submitForm(
+                                                      newImgUrl.value,
+                                                      imgAltTag.value,
+                                                      newName.value,
+                                                      newDesc.value,
+                                                      newGithubLink.value,
+                                                      linkTitleTag.value
+                                                    )">
       <fa name="plus"></fa>
       Add
     </button>
@@ -53,7 +68,7 @@
     <ul class="project-list" *ngFor="let project of projects | async">
       <li>
         <fa name="folder" class="admin-project-icon"></fa>
-        {{project.title}}
+        {{project.name}}
         <button class="btn btn-med btn-default btn-warning left-margin" (click)="editProjectClicked(project)">
           <fa name="pencil"></fa>
           Edit
@@ -63,28 +78,36 @@
     <div *ngIf="selectedProject">
       <div class="form-group">
         <label for="imgUrl">Thumbnail Image Url:</label>
-          <input [(ngModel)]="selectedProject.imgUrl" class="form-control" id="imgUrl" autofocus="true">
-        </div>
-        <div class="form-group">
-          <label for="title">Title:</label>
-          <input [(ngModel)]="selectedProject.title" class="form-control" id="title">
-        </div>
-        <div class="form-group">
-          <label for="desc">Description:</label>
-          <input [(ngModel)]="selectedProject.description" class="form-control" id="desc">
-        </div>
-        <div class="form-group">
-          <label for="githubLink">Github URL:</label>
-          <input [(ngModel)]="selectedProject.githubLink" class="form-control" id="githubLink">
-        </div>
-        <button class="btn btn-lg btn-success" (click)="updateProjectClicked(selectedProject)">
-          <fa name="pencil"></fa>
-          Update
-        </button>
-        <button class="btn btn-lg btn-danger" (click)="cancelEdit()">
-          <fa name="ban"></fa>
-          Cancel
-        </button>
+        <input [(ngModel)]="selectedProject.imgUrl" class="form-control" id="imgUrl" autofocus="true">
+      </div>
+      <div class="form-group">
+        <label for="imgAltTag">Image Alt Tag:</label>
+        <input [(ngModel)]="selectedProject.imgAltTag" class="form-control" id="imgAltTag">
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input [(ngModel)]="selectedProject.name" class="form-control" id="name">
+      </div>
+      <div class="form-group">
+        <label for="desc">Description:</label>
+        <input [(ngModel)]="selectedProject.description" class="form-control" id="desc">
+      </div>
+      <div class="form-group">
+        <label for="githubLink">Github URL:</label>
+        <input [(ngModel)]="selectedProject.githubLink" class="form-control" id="githubLink">
+      </div>
+      <div class="form-group">
+        <label for="linkTitleTag">Link Title Tag:</label>
+        <input [(ngModel)]="selectedProject.linkTitleTag" class="form-control" id="linkTitleTag">
+      </div>
+      <button class="btn btn-lg btn-success" (click)="updateProjectClicked(selectedProject)">
+        <fa name="pencil"></fa>
+        Update
+      </button>
+      <button class="btn btn-lg btn-danger" (click)="cancelEdit()">
+        <fa name="ban"></fa>
+        Cancel
+      </button>
     </div>
   </div>
   <!-- delete project form -->
@@ -93,7 +116,7 @@
     <ul class="project-list" *ngFor="let project of projects | async">
       <li>
         <fa name="folder" class="admin-project-icon"></fa>
-        {{project.title}}
+        {{project.name}}
         <button class="btn btn-med btn-default btn-danger left-margin" (click)="deleteProjectClicked(project)">
           <fa name="exclamation-circle"></fa>
           Delete

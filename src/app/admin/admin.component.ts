@@ -43,8 +43,8 @@ export class AdminComponent implements OnInit {
     this.showDeleteForm = false;
   }
 
-  submitForm(imgUrl: string, title: string, description: string, githubLink: string) {
-    const newProject: Project = new Project(imgUrl, title, description, githubLink);
+  submitForm(imgUrl: string, imgAltTag: string, name: string, description: string, githubLink: string, linkTitleTag: string) {
+    const newProject: Project = new Project(imgUrl, imgAltTag, name, description, githubLink, linkTitleTag);
     this.projectsService.addProject(newProject);
     this.hideAllForms();
   }
