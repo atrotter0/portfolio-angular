@@ -1,0 +1,28 @@
+.large-block {
+  width: 100%;
+  max-width: 950px;
+}
+
+.no-shadow {
+  box-shadow: none;
+}
+
+.project-tile {
+  box-shadow: 2px 2px 10px #4e4e4e;
+  display: inline-block;
+  height: 300px;
+  margin: 15px 10px;
+  padding: 8px;
+  transition: 0.5s;
+  vertical-align: top;
+  width: 30.2%;
+}
+
+.project-tile:hover {
+  box-shadow: 2px 2px 20px #4e4e4e;
+  transition: 0.5s;
+}
+
+.project-tile-image img {
+  width: 100%;
+}

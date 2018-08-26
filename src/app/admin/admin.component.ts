@@ -46,6 +46,7 @@ export class AdminComponent implements OnInit {
   submitForm(imgUrl: string, title: string, description: string, githubLink: string) {
     const newProject: Project = new Project(imgUrl, title, description, githubLink);
     this.projectsService.addProject(newProject);
+    this.hideAllForms();
   }
 
   editProjectClicked(projectToEdit) {
