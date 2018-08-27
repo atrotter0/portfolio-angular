@@ -71,7 +71,6 @@ export class AdminComponent implements OnInit {
 
   ngDoCheck() {
     this.user = firebase.auth().currentUser;
-    console.log(this.user);
   }
 
   runLogout() {
