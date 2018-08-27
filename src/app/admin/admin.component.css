@@ -32,6 +32,10 @@
   margin-right: 10px;
 }
 
+#invalid-access {
+  height: 200px;
+}
+
 /* reponsive styles */
 @media screen and (max-width: 602px) {
   .admin-panel-nav li {

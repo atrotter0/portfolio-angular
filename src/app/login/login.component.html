@@ -10,10 +10,6 @@
       <label for="password">Password:</label>
       <input #password type="password" id="password" class="form-control" required="true">
     </div>
-    <button class="btn btn-lg btn-primary" (click)="runLogin(email.value, password.value)">Login</button>
-  </div>
-  <div class="content-block login-form fast-fade-in" *ngIf="isLoggedIn">
-    <p>You are logged in.</p>
-    <button class="btn btn-lg btn-primary" (click)="runLogout()">Logout</button>
+    <button class="btn btn-lg btn-primary" (click)="runLogin(email.value, password.value); email.value=''; password.value='';">Login</button>
   </div>
 </div>

@@ -39,6 +39,10 @@ a:focus {
   max-width: 800px;
 }
 
+.center {
+  text-align: center;
+}
+
 /* responsive styles */
 @media screen and (max-width: 700px) {
   .content-block {

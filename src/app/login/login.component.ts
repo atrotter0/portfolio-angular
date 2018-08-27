@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,14 @@ export class LoginComponent implements OnInit {
   private isLoggedIn: Boolean;
   private userName: String;
 
-  constructor(public loginService: LoginService) {
+  constructor(public loginService: LoginService, private router: Router) {
     this.loginService.user.subscribe(user => {
       if (user == null) {
         this.isLoggedIn = false;
       } else {
         this.isLoggedIn = true;
         this.userName = user.displayName;
-        console.log(user);
+        this.router.navigate(['admin']);
       }
     });
   }
@@ -29,9 +30,5 @@ export class LoginComponent implements OnInit {
 
   runLogin(email: string, password: string) {
     this.loginService.login(email, password);
-  }
-
-  runLogout() {
-    this.loginService.logout();
   }
 }
