@@ -27,11 +27,12 @@
   border-radius: 2px;
   text-decoration: none;
   transition: 0.2s;
+  font-size: 0.8em;
 }
 
 fa {
   margin-bottom: 10px;
-  padding-left: 8px;
+  padding-left: 10px;
 }
 
 .large-fa-icon {
@@ -43,5 +44,11 @@ fa {
   .nav ul li {
     margin: 0px auto;
     width: 31%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .link-box:hover span:last-child {
+    font-size: 0.5em;
   }
 }
