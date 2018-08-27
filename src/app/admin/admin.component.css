@@ -1,3 +1,7 @@
+.admin-panel-box {
+  margin-bottom: 60px;
+}
+
 .admin-panel-nav {
   list-style-type: none;
   margin: 0px;
@@ -34,9 +38,23 @@
 
 #invalid-access {
   height: 200px;
+  padding-top: 50px;
 }
 
 /* reponsive styles */
+@media screen and (max-width: 800px) {
+  .admin-panel-nav li {
+    display: block;
+    margin: 10px 0px;
+    width: 100%;
+  }
+
+  .admin-panel-nav li .btn {
+    width: 70%;
+  }
+
+}
+
 @media screen and (max-width: 602px) {
   .admin-panel-nav li {
     display: block;
