@@ -14,6 +14,8 @@ import { routing } from './app.routing';
 import { AboutComponent } from './about/about.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AdminComponent } from './admin/admin.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { LoginComponent } from './login/login.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -30,7 +32,8 @@ export const firebaseConfig = {
     HomeComponent,
     AboutComponent,
     ProjectsComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
