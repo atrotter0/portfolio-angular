@@ -66,7 +66,9 @@ export class AdminComponent implements OnInit {
   }
 
   deleteProjectClicked(projectToDelete) {
-    this.projectsService.deleteProject(projectToDelete);
+    if (confirm("Are you sure you want to delete this project?")) {
+      this.projectsService.deleteProject(projectToDelete);
+    }
   }
 
   ngDoCheck() {
