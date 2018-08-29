@@ -40,6 +40,12 @@ fa {
 }
 
 /* responsive styles */
+@media screen and (min-width: 1500px) {
+  .nav {
+    margin-top: 150px;
+  }
+}
+
 @media screen and (max-width: 860px) {
   .nav ul li {
     margin: 0px auto;
