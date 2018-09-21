@@ -11,11 +11,11 @@ A portfolio web app built with Angular to display basic information about my dev
 * Admin login with Firebase authentication
 * CMS for dynamically creating, updating, and deleting projects
 
-#### Homepage
+**Homepage view:**
 ![Image of Homepage view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-home.png)
 
-#### Admin
-![Image of Admin view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-admin-view.png)
+**Admin view:**
+![Image of Admin view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-admin-view-3.png)
 
 ## Setup on OSX
 
