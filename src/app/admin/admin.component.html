@@ -83,12 +83,11 @@
             <h4>Edit Projects</h4>
             <ul class="project-list" *ngFor="let project of projects | async">
               <li>
-                <fa name="folder" class="admin-project-icon"></fa>
-                {{project.name}}
-                <button class="btn btn-med btn-default btn-warning project-btn-left-margin" (click)="editProjectClicked(project)">
+                <button class="btn btn-med btn-default btn-warning project-btn" (click)="editProjectClicked(project)">
                   <fa name="pencil"></fa>
                   Edit
                 </button>
+                {{project.name}}
               </li>
             </ul>
             <div *ngIf="selectedProject">
@@ -131,12 +130,11 @@
             <h4>Delete Projects</h4>
             <ul class="project-list" *ngFor="let project of projects | async">
               <li>
-                <fa name="folder" class="admin-project-icon"></fa>
-                {{project.name}}
-                <button class="btn btn-med btn-default btn-danger project-btn-left-margin" (click)="deleteProjectClicked(project)">
+                <button class="btn btn-med btn-default btn-danger project-btn" (click)="deleteProjectClicked(project)">
                   <fa name="exclamation-circle"></fa>
                   Delete
                 </button>
+                {{project.name}}
               </li>
             </ul>
           </div>

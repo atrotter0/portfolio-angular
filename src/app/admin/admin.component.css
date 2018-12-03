@@ -44,8 +44,8 @@
   width: 100%;
 }
 
-.project-btn-left-margin {
-  float: right;
+.project-btn {
+  margin-right: 20px;
 }
 
 .admin-project-icon {
@@ -78,7 +78,7 @@
 }
 
 @media screen and (max-width: 602px) {
-  .admin-panel-nav li {
+  .admin-panel-nav li, .admin-cms-control-menu .btn {
     display: block;
     margin: 10px 0px;
     width: 100%;
