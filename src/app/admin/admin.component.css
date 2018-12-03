@@ -14,8 +14,25 @@
   margin-right: 10px;
 }
 
-.admin-panel-nav li .btn {
+.admin-cms-editor-btn {
   width: 180px;
+}
+
+.admin-cms-control-menu {
+  margin-bottom: 50px;
+}
+
+.cms-controls-title {
+  margin-bottom: 30px;
+}
+
+.cms-editor-block {
+  margin-top: 50px;
+  text-align: left;
+}
+
+.form-group {
+  margin-top: 40px;
 }
 
 .project-list {
@@ -24,7 +41,7 @@
 
 .project-list li {
   margin-top: 20px;
-  width: 300px;
+  width: 100%;
 }
 
 .project-btn-left-margin {
@@ -42,6 +59,12 @@
 }
 
 /* reponsive styles */
+@media screen and (max-width: 902px) {
+  .content-block {
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .admin-panel-nav li {
     display: block;
@@ -49,10 +72,9 @@
     width: 100%;
   }
 
-  .admin-panel-nav li .btn {
+  .admin-cms-editor-btn {
     width: 70%;
   }
-
 }
 
 @media screen and (max-width: 602px) {
@@ -60,10 +82,6 @@
     display: block;
     margin: 10px 0px;
     width: 100%;
-  }
-
-  .admin-panel-nav li .btn {
-    width: 95%;
   }
 
   .content-block .btn {

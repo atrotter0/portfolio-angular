@@ -1,129 +1,161 @@
 <div *ngIf="user">
-  <h1 class="content-title">Admin</h1>
+  <h1 class="content-title">
+    Admin
+  </h1>
   <div class="content-title-bottom-border"></div>
+  <div class="center admin-cms-control-menu">
+    <button class="btn btn-lg btn-primary" (click)="toggleShowProjectCmsControls()">
+      <fa name="folder"></fa>
+      Projects
+    </button>
+    <button class="btn btn-lg btn-primary">
+      <fa name="list"></fa>
+      About Me
+    </button>
+    <button class="btn btn-lg btn-primary admin-logout-btn" (click)="runLogout()">
+      <fa name="sign-out"></fa>
+      Logout
+    </button>
+  </div>
   <div class="container-block">
     <div class="admin-panel-box">
       <ul class="admin-panel-nav">
-        <li>
-          <button class="btn btn-lg btn-success" (click)="toggleAddForm()">
-            <fa name="plus"></fa>
-            Add Project
-          </button>
-        </li>
-        <li>
-          <button class="btn btn-lg btn-warning" (click)="toggleEditForm()">
-            <fa name="pencil"></fa>
-            Edit Projects
-          </button>
-        </li>
-        <li>
-          <button class="btn btn-lg btn-danger" (click)="toggleDeleteForm()">
-            <fa name="exclamation-circle"></fa>
-            Delete Projects
-          </button>
-        </li>
-        <li>
-          <button class="btn btn-lg btn-primary" (click)="runLogout()">
-            <fa name="sign-out"></fa>
-            Logout
-          </button>
-        </li>
-      </ul>
-    </div>
-    <!-- add project form -->
-    <div class="content-block fast-fade-in" *ngIf="showAddForm">
-      <h4>Add Project</h4>
-      <form (ngSubmit)="submitForm(newImgUrl.value, imgAltTag.value, newName.value, newDesc.value, newGithubLink.value, linkTitleTag.value);">
-        <div class="form-group">
-          <label for="imgUrl">Thumbnail Image Url:</label>
-          <input #newImgUrl class="form-control" id="imgUrl" autofocus="true" required>
+        <!-- Projects CMS Controls -->
+        <div class="content-block fast-fade-in" *ngIf="showProjectCmsControls">
+          <h2 class="cms-controls-title">
+            <fa name="cogs"></fa>
+            Projects
+          </h2>
+          <li>
+            <button class="btn btn-lg btn-success admin-cms-editor-btn" (click)="toggleAddForm()">
+              <fa name="plus"></fa>
+              Add Project
+            </button>
+          </li>
+          <li>
+            <button class="btn btn-lg btn-warning admin-cms-editor-btn" (click)="toggleEditForm()">
+              <fa name="pencil"></fa>
+              Edit Projects
+            </button>
+          </li>
+          <li>
+            <button class="btn btn-lg btn-danger admin-cms-editor-btn" (click)="toggleDeleteForm()">
+              <fa name="exclamation-circle"></fa>
+              Delete Projects
+            </button>
+          </li>
+          <!-- add project form -->
+          <div class="cms-editor-block fast-fade-in" *ngIf="showAddForm">
+            <h4>Add Project</h4>
+            <form (ngSubmit)="submitForm(newImgUrl.value, imgAltTag.value, newName.value, newDesc.value, newGithubLink.value, linkTitleTag.value);">
+              <div class="form-group">
+                <label for="imgUrl">Thumbnail Image Url:</label>
+                <input #newImgUrl class="form-control" id="imgUrl" autofocus="true" required>
+              </div>
+              <div class="form-group">
+                <label for="imgAltTag">Image Alt Tag:</label>
+                <input #imgAltTag class="form-control" id="imgAltTag" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input #newName class="form-control" id="name" required>
+              </div>
+              <div class="form-group">
+                <label for="desc">Description:</label>
+                <input #newDesc class="form-control" id="desc">
+              </div>
+              <div class="form-group">
+                <label for="githubLink">Github URL:</label>
+                <input #newGithubLink class="form-control" id="githubLink" required>
+              </div>
+              <div class="form-group">
+                <label for="linkTitleTag">Link Title Tag:</label>
+                <input #linkTitleTag class="form-control" id="linkTitleTag" required>
+              </div>
+              <button type="submit" class="btn btn-lg btn-success">
+                <fa name="plus"></fa>
+                Add
+              </button>
+            </form>
+          </div>
+          <!-- edit project form -->
+          <div class="cms-editor-block fast-fade-in" *ngIf="showEditForm">
+            <h4>Edit Projects</h4>
+            <ul class="project-list" *ngFor="let project of projects | async">
+              <li>
+                <fa name="folder" class="admin-project-icon"></fa>
+                {{project.name}}
+                <button class="btn btn-med btn-default btn-warning project-btn-left-margin" (click)="editProjectClicked(project)">
+                  <fa name="pencil"></fa>
+                  Edit
+                </button>
+              </li>
+            </ul>
+            <div *ngIf="selectedProject">
+              <div class="form-group">
+                <label for="imgUrl">Thumbnail Image Url:</label>
+                <input [(ngModel)]="selectedProject.imgUrl" class="form-control" id="imgUrl" autofocus="true">
+              </div>
+              <div class="form-group">
+                <label for="imgAltTag">Image Alt Tag:</label>
+                <input [(ngModel)]="selectedProject.imgAltTag" class="form-control" id="imgAltTag">
+              </div>
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input [(ngModel)]="selectedProject.name" class="form-control" id="name">
+              </div>
+              <div class="form-group">
+                <label for="desc">Description:</label>
+                <input [(ngModel)]="selectedProject.description" class="form-control" id="desc">
+              </div>
+              <div class="form-group">
+                <label for="githubLink">Github URL:</label>
+                <input [(ngModel)]="selectedProject.githubLink" class="form-control" id="githubLink">
+              </div>
+              <div class="form-group">
+                <label for="linkTitleTag">Link Title Tag:</label>
+                <input [(ngModel)]="selectedProject.linkTitleTag" class="form-control" id="linkTitleTag">
+              </div>
+              <button class="btn btn-lg btn-success" (click)="updateProjectClicked(selectedProject)">
+                <fa name="pencil"></fa>
+                Update
+              </button>
+              <button class="btn btn-lg btn-danger" (click)="cancelEdit()">
+                <fa name="ban"></fa>
+                Cancel
+              </button>
+            </div>
+          </div>
+          <!-- delete project form -->
+          <div class="cms-editor-block fast-fade-in" *ngIf="showDeleteForm">
+            <h4>Delete Projects</h4>
+            <ul class="project-list" *ngFor="let project of projects | async">
+              <li>
+                <fa name="folder" class="admin-project-icon"></fa>
+                {{project.name}}
+                <button class="btn btn-med btn-default btn-danger project-btn-left-margin" (click)="deleteProjectClicked(project)">
+                  <fa name="exclamation-circle"></fa>
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="imgAltTag">Image Alt Tag:</label>
-          <input #imgAltTag class="form-control" id="imgAltTag" required>
+        <!-- About Me CMS Controls -->
+        <div class="content-block fast-fade-in" *ngIf="showAboutMeCmsControls">
+          <li>
+            <button class="btn btn-lg btn-warning" (click)="toggleEditForm()">
+              <fa name="pencil"></fa>
+              Edit About Me
+            </button>
+          </li>
+          <li>
+            <button class="btn btn-lg btn-danger" (click)="toggleDeleteForm()">
+              <fa name="exclamation-circle"></fa>
+              Delete About Me
+            </button>
+          </li>
         </div>
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input #newName class="form-control" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="desc">Description:</label>
-          <input #newDesc class="form-control" id="desc">
-        </div>
-        <div class="form-group">
-          <label for="githubLink">Github URL:</label>
-          <input #newGithubLink class="form-control" id="githubLink" required>
-        </div>
-        <div class="form-group">
-          <label for="linkTitleTag">Link Title Tag:</label>
-          <input #linkTitleTag class="form-control" id="linkTitleTag" required>
-        </div>
-        <button type="submit" class="btn btn-lg btn-success">
-          <fa name="plus"></fa>
-          Add
-        </button>
-      </form>
-    </div>
-    <!-- edit project form -->
-    <div class="content-block fast-fade-in" *ngIf="showEditForm">
-      <h4>Edit Projects</h4>
-      <ul class="project-list" *ngFor="let project of projects | async">
-        <li>
-          <fa name="folder" class="admin-project-icon"></fa>
-          {{project.name}}
-          <button class="btn btn-med btn-default btn-warning project-btn-left-margin" (click)="editProjectClicked(project)">
-            <fa name="pencil"></fa>
-            Edit
-          </button>
-        </li>
-      </ul>
-      <div *ngIf="selectedProject">
-        <div class="form-group">
-          <label for="imgUrl">Thumbnail Image Url:</label>
-          <input [(ngModel)]="selectedProject.imgUrl" class="form-control" id="imgUrl" autofocus="true">
-        </div>
-        <div class="form-group">
-          <label for="imgAltTag">Image Alt Tag:</label>
-          <input [(ngModel)]="selectedProject.imgAltTag" class="form-control" id="imgAltTag">
-        </div>
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input [(ngModel)]="selectedProject.name" class="form-control" id="name">
-        </div>
-        <div class="form-group">
-          <label for="desc">Description:</label>
-          <input [(ngModel)]="selectedProject.description" class="form-control" id="desc">
-        </div>
-        <div class="form-group">
-          <label for="githubLink">Github URL:</label>
-          <input [(ngModel)]="selectedProject.githubLink" class="form-control" id="githubLink">
-        </div>
-        <div class="form-group">
-          <label for="linkTitleTag">Link Title Tag:</label>
-          <input [(ngModel)]="selectedProject.linkTitleTag" class="form-control" id="linkTitleTag">
-        </div>
-        <button class="btn btn-lg btn-success" (click)="updateProjectClicked(selectedProject)">
-          <fa name="pencil"></fa>
-          Update
-        </button>
-        <button class="btn btn-lg btn-danger" (click)="cancelEdit()">
-          <fa name="ban"></fa>
-          Cancel
-        </button>
-      </div>
-    </div>
-    <!-- delete project form -->
-    <div class="content-block fast-fade-in" *ngIf="showDeleteForm">
-      <h4>Delete Projects</h4>
-      <ul class="project-list" *ngFor="let project of projects | async">
-        <li>
-          <fa name="folder" class="admin-project-icon"></fa>
-          {{project.name}}
-          <button class="btn btn-med btn-default btn-danger project-btn-left-margin" (click)="deleteProjectClicked(project)">
-            <fa name="exclamation-circle"></fa>
-            Delete
-          </button>
-        </li>
       </ul>
     </div>
   </div>

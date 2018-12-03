@@ -14,6 +14,7 @@ import * as firebase from "firebase";
 export class AdminComponent implements OnInit {
   private user;
   projects: FirebaseListObservable<any[]>;
+  showProjectCmsControls: boolean = false;
   showAddForm: boolean = false;
   showEditForm: boolean = false;
   showDeleteForm: boolean = false;
@@ -23,6 +24,11 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.projects = this.projectsService.getProjects();
+  }
+
+  toggleShowProjectCmsControls() {
+    this.showProjectCmsControls = !this.showProjectCmsControls;
+    this.hideAllForms();
   }
 
   toggleAddForm() {
