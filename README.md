@@ -4,12 +4,12 @@
 
 ## Description
 
-A portfolio web app built with Angular to display basic information about my developer strengths, history, future goals and notable projects. Also includes a CMS for site admin to add projects that dynamically display on the Projects page.
+A portfolio web app built with Angular to display basic information about my developer strengths, history, future goals and notable projects. Also includes a CMS for site admin to add projects that dynamically display on the Projects page, as well as update About Me content.
 
 **Key Features:**
 * Responsive design
 * Admin login with Firebase authentication
-* CMS for dynamically creating, updating, and deleting projects and about content
+* CMS for dynamically creating, updating, and deleting projects and personal content
 
 **Home view:**  
 

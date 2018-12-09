@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { EmailValidator } from '../../../node_modules/@angular/forms';
+import { EmailValidator } from '@angular/forms';
 
 @Injectable()
 export class LoginService {

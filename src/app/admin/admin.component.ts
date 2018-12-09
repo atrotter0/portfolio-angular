@@ -3,32 +3,33 @@ import { ProjectsService } from '../services/projects.service';
 import { Project } from '../models/project.model';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { LoginService } from '../services/login.service';
+import { AboutMeService } from '../services/about-me.service';
 import * as firebase from "firebase";
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
-  providers: [ProjectsService, LoginService]
+  providers: [ProjectsService, LoginService, AboutMeService]
 })
 export class AdminComponent implements OnInit {
   private user;
   projects: FirebaseListObservable<any[]>;
-  background: FirebaseListObservable<any[]>;
-  experience: FirebaseListObservable<any[]>;
-  education: FirebaseListObservable<any[]>;
-  proficiencies: FirebaseListObservable<any[]>;
-  hobbies: FirebaseListObservable<any[]>;
+  aboutMe: FirebaseListObservable<any[]>;
   showProjectCmsControls: boolean = false;
-  showAddForm: boolean = false;
-  showEditForm: boolean = false;
-  showDeleteForm: boolean = false;
+  showAddProjectsForm: boolean = false;
+  showEditProjectsForm: boolean = false;
+  showDeleteProjectsForm: boolean = false;
   selectedProject = null;
 
-  constructor(private projectsService: ProjectsService, public loginService: LoginService) {}
+  constructor(
+    private projectsService: ProjectsService,
+    private aboutMeService: AboutMeService,
+    public loginService: LoginService) {}
 
   ngOnInit() {
     this.projects = this.projectsService.getProjects();
+    this.aboutMe = this.aboutMeService.getAboutMe();
   }
 
   toggleShowProjectCmsControls() {
@@ -36,25 +37,25 @@ export class AdminComponent implements OnInit {
     this.hideAllForms();
   }
 
-  toggleAddForm() {
+  toggleAddProjectsForm() {
     this.hideAllForms();
-    this.showAddForm = !this.showAddForm;
+    this.showAddProjectsForm = !this.showAddProjectsForm;
   }
 
-  toggleEditForm() {
+  toggleEditProjectsForm() {
     this.hideAllForms();
-    this.showEditForm = !this.showEditForm;
+    this.showEditProjectsForm = !this.showEditProjectsForm;
   }
 
-  toggleDeleteForm() {
+  toggleDeleteProjectsForm() {
     this.hideAllForms();
-    this.showDeleteForm = !this.showDeleteForm;
+    this.showDeleteProjectsForm = !this.showDeleteProjectsForm;
   }
 
   hideAllForms() {
-    this.showAddForm = false;
-    this.showEditForm = false;
-    this.showDeleteForm = false;
+    this.showAddProjectsForm = false;
+    this.showEditProjectsForm = false;
+    this.showDeleteProjectsForm = false;
   }
 
   submitForm(imgUrl: string, imgAltTag: string, name: string, description: string, githubLink: string, linkTitleTag: string) {
@@ -67,13 +68,13 @@ export class AdminComponent implements OnInit {
     this.selectedProject = projectToEdit;
   }
 
-  cancelEdit() {
+  cancelProjectEdit() {
     this.selectedProject = null;
   }
 
   updateProjectClicked(projectToUpdate) {
     this.projectsService.updateProject(projectToUpdate);
-    this.cancelEdit();
+    this.cancelProjectEdit();
   }
 
   deleteProjectClicked(projectToDelete) {

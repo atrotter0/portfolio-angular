@@ -1,36 +1,40 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { Background } from './../models/background.model';
+import { AboutMe } from '../models/aboutMe.model';
 
 @Injectable()
 export class AboutMeService {
-  background: FirebaseListObservable<any[]>;
+  aboutMe: FirebaseListObservable<any[]>;
 
   constructor(private database: AngularFireDatabase) {
-    this.background = database.list('background');
+    this.aboutMe = database.list('aboutMe');
   }
 
-  getBackground() {
-    return this.background;
+  getAboutMe() {
+    return this.aboutMe;
   }
 
-  getBackgroundById(backgroundId: string) {
-    return this.database.object('background/' + backgroundId);
+  getAboutMeById(aboutMeId: string) {
+    return this.database.object('aboutMe/' + aboutMeId);
   }
 
-  addBackground(newBackground: Background) {
-    this.background[0] = newBackground;
+  addAboutMe(newAboutMe: AboutMe) {
+    this.aboutMe[0] = newAboutMe;
   }
 
-  updateBackground(backgroundToUpdate) {
-    var backgroundInFirebase = this.getBackgroundById(backgroundToUpdate.$key);
-    backgroundInFirebase.update({
-      text: backgroundToUpdate.text
+  updateAboutMe(aboutMeToUpdate) {
+    var aboutMeInFirebase = this.getAboutMeById(aboutMeToUpdate.$key);
+    aboutMeInFirebase.update({
+      background: aboutMeToUpdate.background,
+      experience: aboutMeToUpdate.experience,
+      education: aboutMeToUpdate.education,
+      proficiencies: aboutMeToUpdate.proficiencies,
+      hobbies: aboutMeToUpdate.hobbies
     });
   }
 
-  deletebackground(backgroundToDelete){
-    var backgroundInFirebase = this.getBackgroundById(backgroundToDelete.$key);
-    backgroundInFirebase.remove();
+  deleteaboutMe(aboutMeToDelete){
+    var aboutMeInFirebase = this.getAboutMeById(aboutMeToDelete.$key);
+    aboutMeInFirebase.remove();
   }
 }
