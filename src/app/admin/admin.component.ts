@@ -21,6 +21,10 @@ export class AdminComponent implements OnInit {
   showEditProjectsForm: boolean = false;
   showDeleteProjectsForm: boolean = false;
   selectedProject = null;
+  showAboutMeCmsControls: boolean = false;
+  showAddAboutMeForm: boolean = false;
+  showEditAboutMeForm: boolean = false;
+  showDeleteAboutMeForm: boolean = false;
 
   constructor(
     private projectsService: ProjectsService,
@@ -34,6 +38,11 @@ export class AdminComponent implements OnInit {
 
   toggleShowProjectCmsControls() {
     this.showProjectCmsControls = !this.showProjectCmsControls;
+    this.hideAllForms();
+  }
+
+  toggleShowAboutMeCmsControls() {
+    this.showAboutMeCmsControls = !this.showAboutMeCmsControls;
     this.hideAllForms();
   }
 

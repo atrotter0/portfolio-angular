@@ -8,7 +8,7 @@
       <fa name="folder"></fa>
       Projects
     </button>
-    <button class="btn btn-lg btn-primary">
+    <button class="btn btn-lg btn-primary" (click)="toggleShowAboutMeCmsControls()">
       <fa name="list"></fa>
       About Me
     </button>
@@ -141,14 +141,24 @@
         </div>
         <!-- About Me CMS Controls -->
         <div class="content-block fast-fade-in" *ngIf="showAboutMeCmsControls">
+          <h2 class="cms-controls-title">
+            <fa name="cogs"></fa>
+            About Me
+          </h2>
           <li>
-            <button class="btn btn-lg btn-warning" (click)="toggleEditForm()">
+            <button class="btn btn-lg btn-success admin-cms-editor-btn" (click)="toggleAddAboutMeForm()">
+              <fa name="plus"></fa>
+              Add About Me
+            </button>
+          </li>
+          <li>
+            <button class="btn btn-lg btn-warning" (click)="toggleEditAboutMeForm()">
               <fa name="pencil"></fa>
               Edit About Me
             </button>
           </li>
           <li>
-            <button class="btn btn-lg btn-danger" (click)="toggleDeleteForm()">
+            <button class="btn btn-lg btn-danger" (click)="toggleDeleteAboutMeForm()">
               <fa name="exclamation-circle"></fa>
               Delete About Me
             </button>
