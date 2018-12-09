@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from '../services/projects.service';
-import { Project } from './../models/project.model';
-import { FirebaseListObservable } from '../../../node_modules/angularfire2/database';
+import { Project } from '../models/project.model';
+import { FirebaseListObservable } from 'angularfire2/database';
 import { LoginService } from '../services/login.service';
 import * as firebase from "firebase";
 
@@ -14,6 +14,11 @@ import * as firebase from "firebase";
 export class AdminComponent implements OnInit {
   private user;
   projects: FirebaseListObservable<any[]>;
+  background: FirebaseListObservable<any[]>;
+  experience: FirebaseListObservable<any[]>;
+  education: FirebaseListObservable<any[]>;
+  proficiencies: FirebaseListObservable<any[]>;
+  hobbies: FirebaseListObservable<any[]>;
   showProjectCmsControls: boolean = false;
   showAddForm: boolean = false;
   showEditForm: boolean = false;
