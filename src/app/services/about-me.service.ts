@@ -19,7 +19,8 @@ export class AboutMeService {
   }
 
   addAboutMe(newAboutMe: AboutMe) {
-    this.aboutMe[0] = newAboutMe;
+    this.aboutMe.remove();
+    this.aboutMe.push(newAboutMe);
   }
 
   updateAboutMe(aboutMeToUpdate) {
@@ -33,7 +34,7 @@ export class AboutMeService {
     });
   }
 
-  deleteaboutMe(aboutMeToDelete){
+  deleteAboutMe(aboutMeToDelete){
     var aboutMeInFirebase = this.getAboutMeById(aboutMeToDelete.$key);
     aboutMeInFirebase.remove();
   }

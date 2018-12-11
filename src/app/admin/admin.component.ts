@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from '../services/projects.service';
 import { Project } from '../models/project.model';
+import { AboutMe } from '../models/aboutMe.model';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { LoginService } from '../services/login.service';
 import { AboutMeService } from '../services/about-me.service';
+import { arrayFromStringList } from '../util/util';
 import * as firebase from "firebase";
 
 @Component({
@@ -16,11 +18,13 @@ export class AdminComponent implements OnInit {
   private user;
   projects: FirebaseListObservable<any[]>;
   aboutMe: FirebaseListObservable<any[]>;
+  // Project CMS properties
   showProjectCmsControls: boolean = false;
   showAddProjectsForm: boolean = false;
   showEditProjectsForm: boolean = false;
   showDeleteProjectsForm: boolean = false;
   selectedProject = null;
+  // AboutMe CMS properties
   showAboutMeCmsControls: boolean = false;
   showAddAboutMeForm: boolean = false;
   showEditAboutMeForm: boolean = false;
@@ -51,6 +55,11 @@ export class AdminComponent implements OnInit {
     this.showAddProjectsForm = !this.showAddProjectsForm;
   }
 
+  toggleAddAboutMeForm() {
+    this.hideAllForms();
+    this.showAddAboutMeForm = !this.showAddAboutMeForm;
+  }
+
   toggleEditProjectsForm() {
     this.hideAllForms();
     this.showEditProjectsForm = !this.showEditProjectsForm;
@@ -63,13 +72,35 @@ export class AdminComponent implements OnInit {
 
   hideAllForms() {
     this.showAddProjectsForm = false;
+    this.showAddAboutMeForm = false;
     this.showEditProjectsForm = false;
     this.showDeleteProjectsForm = false;
   }
 
-  submitForm(imgUrl: string, imgAltTag: string, name: string, description: string, githubLink: string, linkTitleTag: string) {
+  submitAddProjectForm(
+    imgUrl: string,
+    imgAltTag: string,
+    name: string,
+    description: string,
+    githubLink: string,
+    linkTitleTag: string
+  ) {
     const newProject: Project = new Project(imgUrl, imgAltTag, name, description, githubLink, linkTitleTag);
     this.projectsService.addProject(newProject);
+    this.hideAllForms();
+  }
+
+  submitAddAboutMeForm(
+    background: string,
+    experience: string,
+    education: string,
+    proficiencies: string,
+    hobbies: string
+  ) {
+    const arrayOfProficiencies = arrayFromStringList(proficiencies);
+    const arrayOfHobbies = arrayFromStringList(hobbies);
+    const newAboutMe: AboutMe = new AboutMe(background, experience, education, arrayOfProficiencies, arrayOfHobbies);
+    this.aboutMeService.addAboutMe(newAboutMe);
     this.hideAllForms();
   }
 
