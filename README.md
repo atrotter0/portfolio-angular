@@ -4,18 +4,16 @@
 
 ## Description
 
-A portfolio web app built with Angular to display basic information about my developer strengths, history, future goals and notable projects. Also includes a CMS for site admin to add projects that dynamically display on the Projects page.
+A portfolio web app built with Angular to display basic information about my developer strengths, history, future goals and notable projects. Also includes a CMS for site admin to add projects that dynamically display on the Projects page, as well as update About Me content.
 
 **Key Features:**
 * Responsive design
 * Admin login with Firebase authentication
-* CMS for dynamically creating, updating, and deleting projects
+* CMS for dynamically creating, updating, and deleting projects and personal content   
 
-**Homepage view:**  
-![Image of Homepage view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-home.png)
+![Image of Homepage view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-home.png)   
 
-**Admin view:**  
-![Image of Admin view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-admin-view-3.png)
+![Image of Admin view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-admin-view-3.png)   
 
 ## Setup on OSX
 
@@ -53,8 +51,8 @@ A portfolio web app built with Angular to display basic information about my dev
 
 ## Links
 
-* [Github Repo] (https://github.com/atrotter0/portfolio-angular)
-* [Firebase App] (https://abel-trotter-portfolio.firebaseapp.com/)
+* Github Repo: https://github.com/atrotter0/portfolio-angular
+* Firebase App: https://abel-trotter-portfolio.firebaseapp.com/
 
 ## License
 
