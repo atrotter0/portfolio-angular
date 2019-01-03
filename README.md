@@ -13,8 +13,6 @@ A portfolio web app built with Angular to display basic information about my dev
 
 ![Image of Homepage view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-home.png)   
 
-   
-
 ![Image of Admin view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-admin-view-3.png)   
 
 ## Setup on OSX
@@ -53,8 +51,8 @@ A portfolio web app built with Angular to display basic information about my dev
 
 ## Links
 
-* [Github Repo] (https://github.com/atrotter0/portfolio-angular)
-* [Firebase App] (https://abel-trotter-portfolio.firebaseapp.com/)
+* Github Repo: https://github.com/atrotter0/portfolio-angular
+* Firebase App: https://abel-trotter-portfolio.firebaseapp.com/
 
 ## License
 
