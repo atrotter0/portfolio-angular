@@ -41,13 +41,15 @@ export class AdminComponent implements OnInit {
   }
 
   toggleShowProjectCmsControls() {
-    this.showProjectCmsControls = !this.showProjectCmsControls;
     this.hideAllForms();
+    this.hideAllCmsControls();
+    this.showProjectCmsControls = !this.showProjectCmsControls;
   }
 
   toggleShowAboutMeCmsControls() {
-    this.showAboutMeCmsControls = !this.showAboutMeCmsControls;
     this.hideAllForms();
+    this.hideAllCmsControls();
+    this.showAboutMeCmsControls = !this.showAboutMeCmsControls;
   }
 
   toggleAddProjectsForm() {
@@ -75,6 +77,11 @@ export class AdminComponent implements OnInit {
     this.showAddAboutMeForm = false;
     this.showEditProjectsForm = false;
     this.showDeleteProjectsForm = false;
+  }
+
+  hideAllCmsControls() {
+    this.showProjectCmsControls = false;
+    this.showAboutMeCmsControls = false;
   }
 
   submitAddProjectForm(
