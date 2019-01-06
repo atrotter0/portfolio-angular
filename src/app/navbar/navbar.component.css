@@ -21,13 +21,10 @@
 }
 
 .link-box:hover span:last-child {
-  padding: 5px;
+  padding-bottom: 5px;
   background-color: transparent;
-  box-shadow: 2px 2px 10px #4e4e4e;
-  border-radius: 2px;
   text-decoration: none;
-  transition: 0.2s;
-  font-size: 0.8em;
+  transition: 0.5s;
 }
 
 fa {
@@ -54,7 +51,7 @@ fa {
 }
 
 @media screen and (max-width: 550px) {
-  .link-box:hover span:last-child {
-    font-size: 0.5em;
+  .large-fa-icon {
+    font-size: 52px;
   }
 }

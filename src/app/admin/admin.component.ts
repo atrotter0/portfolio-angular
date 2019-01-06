@@ -1,54 +1,119 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from '../services/projects.service';
-import { Project } from './../models/project.model';
-import { FirebaseListObservable } from '../../../node_modules/angularfire2/database';
+import { Project } from '../models/project.model';
+import { AboutMe } from '../models/aboutMe.model';
+import { FirebaseListObservable } from 'angularfire2/database';
 import { LoginService } from '../services/login.service';
+import { AboutMeService } from '../services/about-me.service';
 import * as firebase from "firebase";
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
-  providers: [ProjectsService, LoginService]
+  providers: [ProjectsService, LoginService, AboutMeService]
 })
 export class AdminComponent implements OnInit {
   private user;
   projects: FirebaseListObservable<any[]>;
-  showAddForm: boolean = false;
-  showEditForm: boolean = false;
-  showDeleteForm: boolean = false;
+  aboutMe: FirebaseListObservable<any[]>;
+  // Project CMS properties
+  showProjectCmsControls: boolean = false;
+  showAddProjectsForm: boolean = false;
+  showEditProjectsForm: boolean = false;
+  showDeleteProjectsForm: boolean = false;
   selectedProject = null;
+  // AboutMe CMS properties
+  showAboutMeCmsControls: boolean = false;
+  showAddAboutMeForm: boolean = false;
+  showEditAboutMeForm: boolean = false;
+  showDeleteAboutMeForm: boolean = false;
+  selectedAboutMe = null;
 
-  constructor(private projectsService: ProjectsService, public loginService: LoginService) {}
+  constructor(
+    private projectsService: ProjectsService,
+    private aboutMeService: AboutMeService,
+    public loginService: LoginService) {}
 
   ngOnInit() {
     this.projects = this.projectsService.getProjects();
+    this.aboutMe = this.aboutMeService.getAboutMe();
   }
 
-  toggleAddForm() {
+  toggleShowProjectCmsControls() {
     this.hideAllForms();
-    this.showAddForm = !this.showAddForm;
+    this.hideAllCmsControls();
+    this.showProjectCmsControls = !this.showProjectCmsControls;
   }
 
-  toggleEditForm() {
+  toggleShowAboutMeCmsControls() {
     this.hideAllForms();
-    this.showEditForm = !this.showEditForm;
+    this.hideAllCmsControls();
+    this.showAboutMeCmsControls = !this.showAboutMeCmsControls;
   }
 
-  toggleDeleteForm() {
+  toggleAddProjectsForm() {
     this.hideAllForms();
-    this.showDeleteForm = !this.showDeleteForm;
+    this.showAddProjectsForm = !this.showAddProjectsForm;
+  }
+
+  toggleAddAboutMeForm() {
+    this.hideAllForms();
+    this.showAddAboutMeForm = !this.showAddAboutMeForm;
+  }
+
+  toggleEditProjectsForm() {
+    this.hideAllForms();
+    this.showEditProjectsForm = !this.showEditProjectsForm;
+  }
+
+  toggleEditAboutMeForm() {
+    this.hideAllForms();
+    this.showEditAboutMeForm = !this.showEditAboutMeForm;
+  }
+
+  toggleDeleteProjectsForm() {
+    this.hideAllForms();
+    this.showDeleteProjectsForm = !this.showDeleteProjectsForm;
   }
 
   hideAllForms() {
-    this.showAddForm = false;
-    this.showEditForm = false;
-    this.showDeleteForm = false;
+    this.showAddProjectsForm = false;
+    this.showAddAboutMeForm = false;
+    this.showEditProjectsForm = false;
+    this.showEditAboutMeForm = false;
+    this.showDeleteProjectsForm = false;
+    this.cancelProjectEdit();
+    this.cancelAboutMeEdit();
   }
 
-  submitForm(imgUrl: string, imgAltTag: string, name: string, description: string, githubLink: string, linkTitleTag: string) {
+  hideAllCmsControls() {
+    this.showProjectCmsControls = false;
+    this.showAboutMeCmsControls = false;
+  }
+
+  submitAddProjectForm(
+    imgUrl: string,
+    imgAltTag: string,
+    name: string,
+    description: string,
+    githubLink: string,
+    linkTitleTag: string
+  ) {
     const newProject: Project = new Project(imgUrl, imgAltTag, name, description, githubLink, linkTitleTag);
     this.projectsService.addProject(newProject);
+    this.hideAllForms();
+  }
+
+  submitAddAboutMeForm(
+    background: string,
+    experience: string,
+    education: string,
+    proficiencies: string,
+    hobbies: string
+  ) {
+    const newAboutMe: AboutMe = new AboutMe(background, experience, education, proficiencies, hobbies);
+    this.aboutMeService.addAboutMe(newAboutMe);
     this.hideAllForms();
   }
 
@@ -56,13 +121,26 @@ export class AdminComponent implements OnInit {
     this.selectedProject = projectToEdit;
   }
 
-  cancelEdit() {
+  editAboutMeClicked(aboutMeToEdit) {
+    this.selectedAboutMe = aboutMeToEdit;
+  }
+
+  cancelProjectEdit() {
     this.selectedProject = null;
+  }
+
+  cancelAboutMeEdit() {
+    this.selectedAboutMe = null;
   }
 
   updateProjectClicked(projectToUpdate) {
     this.projectsService.updateProject(projectToUpdate);
-    this.cancelEdit();
+    this.cancelProjectEdit();
+  }
+
+  updateAboutMeClicked(aboutMeToUpdate) {
+    this.aboutMeService.updateAboutMe(aboutMeToUpdate);
+    this.cancelAboutMeEdit();
   }
 
   deleteProjectClicked(projectToDelete) {
