@@ -4,7 +4,7 @@
 
 ## Description
 
-A portfolio web app built with Angular to display basic information about myself as a developer, as well as highlight notable projects that I have worked on. Also includes a CMS for site admin to add projects, and functionality to update content on the 'About Me' page.
+A portfolio web app built with Angular to display basic information about myself as a developer and highlight notable projects that I have worked on. Also includes a CMS for site admin to add projects and update content on the 'About Me' page.
 
 **Key Features:**
 * Responsive design
@@ -13,7 +13,9 @@ A portfolio web app built with Angular to display basic information about myself
 
 ![Image of Homepage view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-home.png)   
 
-![Image of Admin view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-admin-view-3.png)   
+![Image of Admin view for About Me](https://s3.amazonaws.com/github-repo-images/portfolio/about-me-edit.png)   
+
+![Image of Admin view for Projects](https://s3.amazonaws.com/github-repo-images/portfolio/projects-add.png)   
 
 ## Setup on OSX
 
