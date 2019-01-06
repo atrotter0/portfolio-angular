@@ -51,29 +51,7 @@ fa {
 }
 
 @media screen and (max-width: 550px) {
-  .nav ul li {
-    display: block;
-    margin: 10px auto;
-    width: 100%;
-    padding: 10px;
-    box-shadow: 2px 2px 10px rgba(78, 78, 78, 0.3);
-  }
-
-  .nav ul li a {
-    display: block;
-    width: 100%;
-  }
-
   .large-fa-icon {
-    font-size: 60px;
-  }
-
-  .link-box span:last-child {
-    font-size: 1.8em;
-    letter-spacing: 2px;
-  }
-
-  .link-box:hover span:last-child {
-    font-size: 1.8em;
+    font-size: 52px;
   }
 }
