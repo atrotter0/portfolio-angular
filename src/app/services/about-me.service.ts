@@ -33,9 +33,4 @@ export class AboutMeService {
       hobbies: aboutMeToUpdate.hobbies
     });
   }
-
-  deleteAboutMe(aboutMeToDelete){
-    var aboutMeInFirebase = this.getAboutMeById(aboutMeToDelete.$key);
-    aboutMeInFirebase.remove();
-  }
 }

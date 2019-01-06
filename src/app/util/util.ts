@@ -1,3 +1,3 @@
-export const arrayFromStringList = function(stringToSplit: string) {
-  return stringToSplit.split(',').map(string => string.trim());
+export const getArrayFromString = function(stringToSplit: string) {
+  return stringToSplit.split(',').map(text => text.trim());
 };
