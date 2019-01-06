@@ -13,7 +13,11 @@ A portfolio web app built with Angular to display basic information about myself
 
 ![Image of Homepage view](https://s3.amazonaws.com/github-repo-images/portfolio/portfolio-home.png)   
 
+***
+
 ![Image of Admin view for About Me](https://s3.amazonaws.com/github-repo-images/portfolio/about-me-edit.png)   
+
+***
 
 ![Image of Admin view for Projects](https://s3.amazonaws.com/github-repo-images/portfolio/projects-add.png)   
 
