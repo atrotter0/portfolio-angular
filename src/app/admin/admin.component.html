@@ -157,15 +157,10 @@
               Edit About Me
             </button>
           </li>
-          <li>
-            <button class="btn btn-lg btn-danger" (click)="toggleDeleteAboutMeForm()">
-              <fa name="exclamation-circle"></fa>
-              Delete About Me
-            </button>
-          </li>
           <!-- add about me form -->
           <div class="cms-editor-block fast-fade-in" *ngIf="showAddAboutMeForm">
             <h4>Add About Me</h4>
+            <p>Note: This will overwrite the existing "About Me" record.</p>
             <form (ngSubmit)="submitAddAboutMeForm(newBackground.value, newExperience.value, newEducation.value, newProficiencies.value, newHobbies.value);">
               <div class="form-group">
                 <label for="background">Background:</label>
@@ -192,6 +187,49 @@
                 Add
               </button>
             </form>
+          </div>
+          <!-- edit AboutMe form -->
+          <div class="cms-editor-block fast-fade-in" *ngIf="showEditAboutMeForm">
+            <h4>Edit About Me</h4>
+            <ul class="project-list" *ngFor="let aboutMeRecord of aboutMe | async">
+              <li>
+                <button class="btn btn-med btn-default btn-warning project-btn" (click)="editAboutMeClicked(aboutMeRecord)">
+                  <fa name="pencil"></fa>
+                  Edit
+                </button>
+                About Me
+              </li>
+            </ul>
+            <div *ngIf="selectedAboutMe">
+              <div class="form-group">
+                <label for="background">Background:</label>
+                <textarea [(ngModel)]="selectedAboutMe.background" class="form-control" id="background" autofocus="true" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="experience">Experience:</label>
+                <textarea [(ngModel)]="selectedAboutMe.experience" class="form-control" id="experience" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="name">Education:</label>
+                <textarea [(ngModel)]="selectedAboutMe.education" class="form-control" id="education" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="proficiencies">Proficiencies:</label>
+                <input [(ngModel)]="selectedAboutMe.proficiencies" class="form-control" id="proficiencies">
+              </div>
+              <div class="form-group">
+                <label for="hobbies">Hobbies:</label>
+                <input [(ngModel)]="selectedAboutMe.hobbies" class="form-control" id="hobbies" required>
+              </div>
+              <button class="btn btn-lg btn-success" (click)="updateAboutMeClicked(selectedAboutMe)">
+                <fa name="pencil"></fa>
+                Update
+              </button>
+              <button class="btn btn-lg btn-danger" (click)="cancelAboutMeEdit()">
+                <fa name="ban"></fa>
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </ul>

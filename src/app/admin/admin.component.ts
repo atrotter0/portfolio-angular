@@ -5,7 +5,6 @@ import { AboutMe } from '../models/aboutMe.model';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { LoginService } from '../services/login.service';
 import { AboutMeService } from '../services/about-me.service';
-import { arrayFromStringList } from '../util/util';
 import * as firebase from "firebase";
 
 @Component({
@@ -29,6 +28,7 @@ export class AdminComponent implements OnInit {
   showAddAboutMeForm: boolean = false;
   showEditAboutMeForm: boolean = false;
   showDeleteAboutMeForm: boolean = false;
+  selectedAboutMe = null;
 
   constructor(
     private projectsService: ProjectsService,
@@ -67,6 +67,11 @@ export class AdminComponent implements OnInit {
     this.showEditProjectsForm = !this.showEditProjectsForm;
   }
 
+  toggleEditAboutMeForm() {
+    this.hideAllForms();
+    this.showEditAboutMeForm = !this.showEditAboutMeForm;
+  }
+
   toggleDeleteProjectsForm() {
     this.hideAllForms();
     this.showDeleteProjectsForm = !this.showDeleteProjectsForm;
@@ -76,7 +81,10 @@ export class AdminComponent implements OnInit {
     this.showAddProjectsForm = false;
     this.showAddAboutMeForm = false;
     this.showEditProjectsForm = false;
+    this.showEditAboutMeForm = false;
     this.showDeleteProjectsForm = false;
+    this.cancelProjectEdit();
+    this.cancelAboutMeEdit();
   }
 
   hideAllCmsControls() {
@@ -104,9 +112,7 @@ export class AdminComponent implements OnInit {
     proficiencies: string,
     hobbies: string
   ) {
-    const arrayOfProficiencies = arrayFromStringList(proficiencies);
-    const arrayOfHobbies = arrayFromStringList(hobbies);
-    const newAboutMe: AboutMe = new AboutMe(background, experience, education, arrayOfProficiencies, arrayOfHobbies);
+    const newAboutMe: AboutMe = new AboutMe(background, experience, education, proficiencies, hobbies);
     this.aboutMeService.addAboutMe(newAboutMe);
     this.hideAllForms();
   }
@@ -115,13 +121,26 @@ export class AdminComponent implements OnInit {
     this.selectedProject = projectToEdit;
   }
 
+  editAboutMeClicked(aboutMeToEdit) {
+    this.selectedAboutMe = aboutMeToEdit;
+  }
+
   cancelProjectEdit() {
     this.selectedProject = null;
+  }
+
+  cancelAboutMeEdit() {
+    this.selectedAboutMe = null;
   }
 
   updateProjectClicked(projectToUpdate) {
     this.projectsService.updateProject(projectToUpdate);
     this.cancelProjectEdit();
+  }
+
+  updateAboutMeClicked(aboutMeToUpdate) {
+    this.aboutMeService.updateAboutMe(aboutMeToUpdate);
+    this.cancelAboutMeEdit();
   }
 
   deleteProjectClicked(projectToDelete) {
